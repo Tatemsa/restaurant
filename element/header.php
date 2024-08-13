@@ -1,3 +1,8 @@
+<?php 
+  if(session_status()=== PHP_SESSION_NONE){
+    session_start();
+  }
+?>
 <!DOCTYPE html>
 <html class="no-js">
 	<head>
@@ -71,6 +76,10 @@
                                 <li><a href="#price">menu</a></li>
                                 <li><a href="#subscribe">news</a></li>
                                 <li><a href="#contact-us">contacts</a></li>
+                                <?php if(!empty($_SESSION['connected'])):?>
+                                  <li><a href="/logout.php">Logout</a></li>
+                                <?php endif;?>
+
                               </ul>
                             </div><!-- /.navbar-collapse -->
                           </div><!-- /.container-fluid -->

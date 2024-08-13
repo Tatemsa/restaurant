@@ -1,4 +1,4 @@
-footer  start
+<!-- footer  start
     ============================= -->
     <section id="footer">
         <div class="container">
