@@ -1,14 +1,15 @@
 <?php
     require 'function/contact.php';
     $error = null;
-    if(isset($_POST) && empty($_POST))
+    if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['message']))
     {
-        if(post_is_set($_POST)){
-
-        } else{
-            $error = 'Veuiller remplir tous les champs s\'il vous plait';    
+       if(post_is_set($_POST)){
+        
+       } else {
+        $error = 'Veuiller remplir tous les champs s\'il vous plait';
         }
-    }
+        
+    } 
 ?>
 
 <!--
@@ -21,7 +22,7 @@
                     <div class="block">
                         <h1 class="heading wow fadeInUp" data-wow-duration="500ms" data-wow-delay="300ms">our <span>CONTACT US</span></h1>
                         <h3 class="title wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">Sign Up for <span>Email Alerts</span> </h3>
-                        <?php if(!post_is_set($_POST)):?>
+                        <?php if($error !==  null):?>
                             <div class="alert alert-danger">
                                 <?=$error;?>
                             </div>

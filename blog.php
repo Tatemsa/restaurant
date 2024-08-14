@@ -1,3 +1,7 @@
+<?php
+    require_once 'data/data.php';
+?>
+ 
  <!--
     blog start
     ============================ -->
@@ -8,60 +12,17 @@
                     <div class="block">
                         <h1 class="heading">Latest <span>From</span> the <span>Blog</span></h1>
                         <ul>
-                            <li class="wow fadeInLeft" data-wow-duration="300ms" data-wow-delay="300ms">
-                                <div class="blog-img">
-                                    <img src="images/blog/blog-img-1.jpg" alt="blog-img">
-                                </div>
-                                <div class="content-right">
-                                    <h3>Homestyle Chicken Pot Pie</h3>
-                                    <p>Prepared in true New England fash-ion. Tender all-white meat chicken simmered...</p>
-                                </div>
-                            </li>
-                            <li class="wow fadeInLeft" data-wow-duration="300ms" data-wow-delay="400ms">
-                                <div class="blog-img">
-                                    <img src="images/blog/blog-img-2.jpg" alt="blog-img">
-                                </div>
-                                <div class="content-right">
-                                    <h3>Homestyle Chicken Pot Pie</h3>
-                                    <p>Prepared in true New England fash-ion. Tender all-white meat chicken simmered...</p>
-                                </div>
-                            </li>
-                            <li class="wow fadeInLeft" data-wow-duration="300ms" data-wow-delay="500ms">
-                                <div class="content-left">
-                                    <h3>Homestyle Chicken Pot Pie</h3>
-                                    <p>Prepared in true New England fash-ion. Tender all-white meat chicken simmered...</p>
-                                </div>
-                                <div class="blog-img-2">
-                                    <img src="images/blog/blog-img-3.jpg" alt="blog-img">
-                                </div>
-                            </li>
-                            <li class="wow fadeInLeft" data-wow-duration="300ms" data-wow-delay="600ms">
-                                <div class="content-left">
-                                    <h3>Homestyle Chicken Pot Pie</h3>
-                                    <p>Prepared in true New England fash-ion. Tender all-white meat chicken simmered...</p>
-                                </div>
-                                <div class="blog-img-2">
-                                    <img src="images/blog/blog-img-4.jpg" alt="blog-img">
-                                </div>
-                            </li>
-                            <li class="wow fadeInLeft" data-wow-duration="300ms" data-wow-delay="700ms">
-                                <div class="blog-img">
-                                    <img src="images/blog/blog-img-5.jpg" alt="blog-img">
-                                </div>
-                                <div class="content-right">
-                                    <h3>Homestyle Chicken Pot Pie</h3>
-                                    <p>Prepared in true New England fash-ion. Tender all-white meat chicken simmered...</p>
-                                </div>
-                            </li>
-                            <li class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="800ms">
-                                <div class="blog-img">
-                                    <img src="images/blog/blog-img-6.jpg" alt="blog-img">
-                                </div>
-                                <div class="content-right">
-                                    <h3>Homestyle Chicken Pot Pie</h3>
-                                    <p>Prepared in true New England fash-ion. Tender all-white meat chicken simmered...</p>
-                                </div>
-                            </li>
+                            <?php foreach($images as $item):?>
+                                <li class="wow fadeInLeft" data-wow-duration="300ms" data-wow-delay="300ms">
+                                    <div class="blog-img">
+                                        <img src="<?=$item['path']?>" alt="blog-img">
+                                    </div>
+                                    <div class="content-right">
+                                        <h3><?=$item['title']?></h3>
+                                        <p><?=$item['description']?></p>
+                                    </div>
+                                </li>
+                            <?php endforeach;?>
                         </ul>
                         <a class="btn btn-default btn-more-info wow bounceIn" data-wow-duration="500ms" data-wow-delay="1200ms" href="#" role="button">More Info</a>
                     </div>

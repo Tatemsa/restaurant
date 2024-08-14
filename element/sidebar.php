@@ -1,3 +1,6 @@
+<?php
+    require_once 'data/data.php';
+?>
 <!--
     Slider start
     ============================== -->
@@ -10,31 +13,11 @@
                             <h3>Featured <span>Works</span></h3>
                         </div>
                         <div id="owl-example" class="owl-carousel">
-                            <div>
-                                <img class="img-responsive" src="images/slider/slider-img-1.jpg" alt="">
+                            <?php foreach($carousel as $item):?>
+                                <div>
+                                <img class="img-responsive" src="<?= $item['path']?>" alt="">
                             </div>
-                            <div>
-                                <img class="img-responsive" src="images/slider/slider-img-2.jpg" alt="">
-                            </div>
-                            <div>
-                                <img class="img-responsive" src="images/slider/slider-img-3.jpg" alt="">
-                            </div>
-                            <div>
-                                <img class="img-responsive" src="images/slider/slider-img-4.jpg" alt="">
-                            </div>
-                            <div>
-                                <img class="img-responsive" src="images/slider/slider-img-1.jpg" alt="">
-                            </div>
-                            <div>
-                                <img class="img-responsive" src="images/slider/slider-img-2.jpg" alt="">
-                            </div>
-                            <div>
-                                <img class="img-responsive" src="images/slider/slider-img-3.jpg" alt="">
-                            </div>
-                            <div>
-                                <img class="img-responsive" src="images/slider/slider-img-4.jpg" alt="">
-                            </div>
-                        
+                            <?php endforeach;?>
                         </div>
                     </div>
                 </div><!-- .col-md-12 close -->
