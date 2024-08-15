@@ -2,6 +2,8 @@
   if(session_status()=== PHP_SESSION_NONE){
     session_start();
   }
+  require_once dirname(__DIR__). DIRECTORY_SEPARATOR . 'function' . DIRECTORY_SEPARATOR . 'counter.php';
+  $views = add_view();
 ?>
 <!DOCTYPE html>
 <html class="no-js">
