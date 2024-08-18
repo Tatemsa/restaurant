@@ -4,6 +4,7 @@
   }
   require_once dirname(__DIR__). DIRECTORY_SEPARATOR . 'function' . DIRECTORY_SEPARATOR . 'counter.php';
   $views = add_view();
+  $viewsPerMonth = add_view_per_month();
 ?>
 <!DOCTYPE html>
 <html class="no-js">
@@ -78,6 +79,7 @@
                                 <li><a href="#price">menu</a></li>
                                 <li><a href="#subscribe">news</a></li>
                                 <li><a href="#contact-us">contacts</a></li>
+                                <li><a href="/dashboard.php">Administration</a></li>
                                 <?php if(!empty($_SESSION['connected'])):?>
                                   <li><a href="/logout.php">Logout</a></li>
                                 <?php endif;?>
