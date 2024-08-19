@@ -27,6 +27,7 @@
             $viewPerMonth = number_views_per_month($yearSelected , $monthSelected);
         }
     }
+    var_dump($_POST);
 ?>
 
 <div class="container">
@@ -82,7 +83,7 @@
         </div>
 
         <div class="col-md-4">
-            <h1>Message des utilisateures</h1><br>
+            <h1>Messages des utilisateures</h1><br>
         </div>
     </div>
 </div>

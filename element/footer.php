@@ -1,3 +1,6 @@
+<?php 
+    require_once 'data/data.php';
+?>
 <!-- footer  start
     ============================= -->
     <section id="footer">
@@ -9,17 +12,17 @@
                         <div class="info">
                             <ul>
                                 <li>
-                                  <h4><i class="fa fa-phone"></i>Telefone</h4>
-                                  <p>(000) 123 456 78- (000) 123 4567 89</p>
+                                  <h4><i class="fa fa-phone"></i>Telephone</h4>
+                                  <p>+237 690854472</p>
                                     
                                 </li>
                                 <li>
-                                  <h4><i class="fa fa-map-marker"></i>Address</h4>
-                                  <p>2046 Blue Spruce Lane Laurel Canada</p>
+                                  <h4><i class="fa fa-map-marker"></i>Adresse</h4>
+                                  <p>Entrée campus, Dschang-Cameroun</p>
                                 </li>
                                 <li>
-                                  <h4><i class="fa fa-envelope"></i>E mail</h4>
-                                  <p>rest@gmail.com - rest@mail.ru</p>
+                                  <h4><i class="fa fa-envelope"></i>E-mail</h4>
+                                  <p>tatemsabill@gmail.com </p>
                                   
                                 </li>
                             </ul>
@@ -50,18 +53,11 @@
                         <div class="gallary">
                             <h3>PHOTO <span>STREAM</span></h3>
                             <ul>
+                                <?php foreach($photos as $item):?>
                                 <li>
-                                    <a href="#"><img src="images/photo/photo-1.jpg" alt=""></a>
+                                    <a href="#"><img src="<?=$item?>" alt=""></a>
                                 </li>
-                                <li>
-                                    <a href="#"><img src="images/photo/photo-2.jpg" alt=""></a>
-                                </li>
-                                <li>
-                                    <a href="#"><img src="images/photo/photo-3.jpg" alt=""></a>
-                                </li>
-                                <li>
-                                    <a href="#"><img src="images/photo/photo-4.jpg" alt=""></a>
-                                </li>
+                                <?php endforeach;?>
                             </ul>
                         </div>
                         <div class="social-media-link">
@@ -103,7 +99,7 @@
             <div class="row">
                 <div class="col-md-12 col-sm-12">
                     <div class="block">
-                        <p>Copyright &copy; 2014 - All Rights Reserved.Design and Developed By <a href="http://www.themefisher.com">Themefisher</a></p>
+                        <p>Copyright &copy; 2024 - All Rights Reserved.Design and Developed By <a href="http://www.startuplife.com">StartupLife</a></p>
                     </div>
                 </div>
             </div>

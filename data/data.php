@@ -109,3 +109,10 @@
         "11" => "Novembre",
         "12" => "Decembre"
     ];
+
+    $photos = [
+        'images/photo/photo-1.jpg',
+        'images/photo/photo-2.jpg',
+        'images/photo/photo-3.jpg',
+        'images/photo/photo-4.jpg'
+    ];

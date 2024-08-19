@@ -32,6 +32,7 @@
         return $total;
 
     }
+    
     function  number_views_per_month(int $year, string $month): int{
         $file = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'counter-' . $year . '-' . $month . '-*';
         $files = glob($file);

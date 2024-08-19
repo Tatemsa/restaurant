@@ -1,12 +1,14 @@
 <?php
     require 'function/contact.php';
+    require_once 'data/data.php';
     $error = null;
     if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['message']))
     {
        if(post_is_set($_POST)){
-        
+            //Gestion des messages utilisateur avec la base de données...
+            
        } else {
-        $error = 'Veuiller remplir tous les champs s\'il vous plait';
+            $error = 'Veuiller remplir tous les champs s\'il vous plait';
         }
         
     } 
