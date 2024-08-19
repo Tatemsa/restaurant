@@ -55,9 +55,32 @@
             <?php endif;?>
             </div>
         </div>
+
         <div class="col-md-4">
             <h1>Menu</h1><br>
+            <div class="bd-example m-0 border-0">
+                <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach($menu as $k=>$item):?>
+                    <tr>
+                        <th scope="row"><?=$k; ?></th>
+                        <td><?=$item['title']; ?></td>
+                        <td><?=$item["price"]; ?></td>
+                    </tr>
+                <?php endforeach;?>
+                </tbody>
+                </table>
+            </div>
+            
         </div>
+
         <div class="col-md-4">
             <h1>Message des utilisateures</h1><br>
         </div>
