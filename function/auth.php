@@ -8,7 +8,7 @@
 
     function forced_user_connect(){
         if(!is_connected()){
-            header('Location: /login.php');
+            header('Location: /resto/login.php');
             exit();
         }
     }

@@ -5,13 +5,17 @@
   require_once dirname(__DIR__). DIRECTORY_SEPARATOR . 'function' . DIRECTORY_SEPARATOR . 'counter.php';
   $views = add_view();
   $viewsPerMonth = add_view_per_month();
+  require_once 'data/config.php';
+  require_once 'function/db.php';
+  $pdo = db_connection($config['dbname'],$config['dbhost'], $config['dbuser'],$config['dbpassword']);
+
 ?>
 <!DOCTYPE html>
 <html class="no-js">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>Restaurant One Page HTML5 Template</title>
+		<title><?=$title;?></title>
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- CSS

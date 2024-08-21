@@ -3,8 +3,13 @@
     require 'function/auth.php';
     forced_user_connect();
     
+    require_once 'data/config.php';
+    $title .= ' | dashboard';
     require 'element/header.php';
     require_once 'data/data.php';
+    require_once 'data/config.php';
+
+    $query = find_all($pdo)->fetchAll();
     
     $year = (int)date('Y');
     $yearIsSelected = false;
@@ -22,17 +27,16 @@
     }
 
     if($yearIsSelected){
-        $viewPerYear = number_views_per_year($yearSelected );
+        $viewPerYear = number_views_per_year($yearSelected);
         if($monthIsSelected){
             $viewPerMonth = number_views_per_month($yearSelected , $monthSelected);
         }
     }
-    var_dump($_POST);
 ?>
 
 <div class="container">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
             <h1>Nombre de vues</h1><br>
             <div class="list-group">
             <?php for ($i=1; $i<6; $i++):?>
@@ -57,23 +61,26 @@
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-6">
             <h1>Menu</h1><br>
+            <a class="btn btn-success" href="/resto/edith.php">Ajouter un plat</a>
             <div class="bd-example m-0 border-0">
                 <table class="table table-striped">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nom</th>
-                    <th scope="col">Price</th>
+                    <th scope="col">Prix</th>
+                    <th scope="col">Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach($menu as $k=>$item):?>
+                <?php foreach($query as $k=>$item):?>
                     <tr>
                         <th scope="row"><?=$k; ?></th>
-                        <td><?=$item['title']; ?></td>
-                        <td><?=$item["price"]; ?></td>
+                        <td><?=$item->title; ?></td>
+                        <td><?=$item->price; ?></td>
+                        <td><a class="btn btn-primary" href="/resto/edith.php?id=<?=$item->id;?>">Modifier</a>  <a class="btn btn-danger" href="/resto/delete.php?id=<?=$item->id;?>">Supprimer</a></td>
                     </tr>
                 <?php endforeach;?>
                 </tbody>

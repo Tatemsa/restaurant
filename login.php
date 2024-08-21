@@ -1,22 +1,28 @@
 <?php 
-    
+    require_once 'data/config.php';
+    require_once 'function/auth.php';
+    $title .= ' | login';
+
+    require_once 'function/db.php';
+    $pdo = db_connection($config['dbname'],$config['dbhost'],$config['dbuser'],$config['dbpassword']);
     $error = null;
-    if(isset($_POST['pseudo']) && isset($_POST['password'])){
-        if($_POST['pseudo'] == 'Bill' && $_POST['password'] == '12345'){
-            session_start();
-            $_SESSION['connected'] = 1;
-            header('Location: /dashboard.php');
+    if(isset($_POST['pseudo']) && isset($_POST['pseudo'])){
+        $pdo = db_connection($config['dbname'],$config['dbhost'],$config['dbuser'],$config['dbpassword']);
+        if(authentification($_POST['pseudo'],$_POST['password'], $pdo)){
+            header('Location: /resto/dashboard.php');
             exit();
         }else{
             $error = 'Identifiant ou mot de passe incorrect';
         }
     }
-    require 'function/auth.php';
+
+    
     if(is_connected()){
-        header('Location: /dashboard.php');
+        header('Location: /resto/dashboard.php');
         exit();
     }
-    require_once 'element/header.php';
+
+    require_once 'element/header.php';   
     
 ?>
 <br>
