@@ -24,3 +24,23 @@
         return $query;
     }
 
+    function find_by_id($id, $pdo){
+        $query = $pdo->prepare("SELECT * FROM foods WHERE id=?");
+        $query->execute([$id]);
+        return $query->fetch();
+    }
+
+    function insert($title, $description, $admin_id, $price, $pdo){
+        $query = $pdo->prepare("INSERT INTO foods (title, description, admin_id, price) VALUES (?,?,?,?)");
+        return $query->execute([$title, $description, $admin_id, $price]);
+    }
+
+    function delete($id, $pdo){
+        $query = $pdo->prepare("DELETE FROM foods WHERE id=?");
+        return $query->execute([$id]);
+    }
+
+    function update($title, $description, $admin_id, $price, $pdo){
+        $query = $pdo->prepare("UPDATE INTO foods (title, description, admin_id, price) VALUES (?,?,?,?)");
+        return $query->execute([$title, $description, $admin_id, $price]);
+    }

@@ -26,6 +26,7 @@
     
 ?>
 <br>
+<h1 class="heading wow fadeInUp" data-wow-duration="300ms" data-wow-delay="300ms"><span>Connection</span></h1>
 <section>
     <div class="container">
         <div class="row">
