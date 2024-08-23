@@ -1,23 +1,33 @@
 <?php
     require_once 'function/auth.php';
     forced_user_connect();
-    require 'element/header.php';
+    require_once 'data/config.php';
+    require_once 'function/db.php';
+    
+    $pdo = db_connection($config['dbname'],$config['dbhost'], $config['dbuser'],$config['dbpassword']);
 
     $error = null;
     $isSuccess = null;
-
+    $title  = null;
+    $description = null;
+    $price = null;
     if(isset($_GET['id'])){
         $query = find_by_id(htmlentities($_GET['id']), $pdo);
-    }
-        
+        $title = $query->title;
+        $description = $query->description;
+        $price = $query->price;
+    } 
     
     //Ici nous n'avons pas encore géré les fichiers
     if(isset($_POST['title']) && isset($_POST['description']) && isset($_POST['price'])){
         if(!is_null($_POST['title']) && !is_null($_POST['description']) && !is_null($_POST['price'])){
             if(isset($_GET['id'])){
                 $isSuccess = update($_POST['title'], $_POST['description'], $_POST['admin_id'], $_POST['price'], $pdo);
+                if($isSuccess){
+                    header('Location: /resto/dashboard.php');
+                }
             } else {
-                $isSuccess=insert($_POST['title'], $_POST['description'], $_POST['admin_id'], $_POST['price'], $pdo);   
+                $isSuccess = insert($_POST['title'], $_POST['description'], $_POST['admin_id'], $_POST['price'], $pdo);   
             }
 
         }  else  {
@@ -25,6 +35,7 @@
         }
     }
 
+    require 'element/header.php';
     
 ?>
 <h1 class="heading wow fadeInUp" data-wow-duration="300ms" data-wow-delay="300ms"><span>Ajouter/Modifier</span> un plat</h1>
@@ -46,15 +57,15 @@
             <form action="" method="post">
                 <div class="form-group">
                     <label for="title">Nom du plat</label>
-                    <input class="form-control" type="text" name="title" value="<?=$query->title;?>">
+                    <input class="form-control" type="text" name="title" value="<?=$title;?>">
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <textarea name="description" class="form-control" value=""><?=$query->description;?></textarea>
+                    <textarea name="description" class="form-control" value=""><?=$description;?></textarea>
                 </div>
                 <div class="form-group">
                     <label for="price">Prix</label>
-                    <input class="form-control" type="text" name="price" value="<?=$query->price;?>">
+                    <input class="form-control" type="text" name="price" value="<?=$price;?>">
                 </div>
                 <div class="form-group">
                     <label for="image">Image</label>

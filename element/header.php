@@ -83,9 +83,9 @@
                                 <li><a href="#price">menu</a></li>
                                 <li><a href="#subscribe">news</a></li>
                                 <li><a href="#contact-us">contacts</a></li>
-                                <li><a href="/dashboard.php">Administration</a></li>
+                                <li><a href="/resto/dashboard.php">Administration</a></li>
                                 <?php if(!empty($_SESSION['connected'])):?>
-                                  <li><a href="/logout.php">Logout</a></li>
+                                  <li><a href="/resto/logout.php">Logout</a></li>
                                 <?php endif;?>
 
                               </ul>

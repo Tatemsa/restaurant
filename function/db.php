@@ -41,6 +41,6 @@
     }
 
     function update($title, $description, $admin_id, $price, $pdo){
-        $query = $pdo->prepare("UPDATE INTO foods (title, description, admin_id, price) VALUES (?,?,?,?)");
-        return $query->execute([$title, $description, $admin_id, $price]);
+        $query = $pdo->prepare("UPDATE foods SET title =? , description = ?, admin_id = ?, price = ? WHERE id = ?");
+        return $query->execute([$title, $description, $admin_id, $price, htmlentities($_GET['id'])]);
     }
