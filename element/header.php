@@ -1,7 +1,8 @@
-<?php 
+<?php
   if(session_status()=== PHP_SESSION_NONE){
     session_start();
   }
+
   require_once dirname(__DIR__). DIRECTORY_SEPARATOR . 'function' . DIRECTORY_SEPARATOR . 'counter.php';
   $views = add_view();
   $viewsPerMonth = add_view_per_month();

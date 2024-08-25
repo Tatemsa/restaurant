@@ -1,4 +1,6 @@
 <?php 
+// namespace Resto;
+
     function add_view(): string {
         $file = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'counter';
         $counter = 1;
@@ -41,5 +43,4 @@
             $total += (int)file_get_contents($item);
         }
         return $total;
-
     }
