@@ -1,26 +1,34 @@
-<?php 
-    // require_once 'data/config.php';
-    // require_once 'function/auth.php';
-    //$title .= ' | login';
+<?php
 
-    // require_once 'function/db.php';
-    // $pdo = db_connection($config['dbname'],$config['dbhost'],$config['dbuser'],$config['dbpassword']);
-    // $error = null;
-    // if(isset($_POST['pseudo']) && isset($_POST['pseudo'])){
-    //     $pdo = db_connection($config['dbname'],$config['dbhost'],$config['dbuser'],$config['dbpassword']);
-    //     if(authentification($_POST['pseudo'],$_POST['password'], $pdo)){
-    //         header('Location: /resto/dashboard.php');
-    //         exit();
-    //     }else{
-    //         $error = 'Identifiant ou mot de passe incorrect';
-    //     }
-    // }
+use App\Table\Admin;
+Use App\Apli;
 
-    
-    // if(is_connected()){
-    //     header('Location: /resto/dashboard.php');
-    //     exit();
-    // } 
+    Apli::setTitle("Login");
+
+    if(Apli::isConnected()){
+        header('Location: /resto/public/index.php?p=dashboard');
+        exit();
+    } 
+
+    $error = null;
+    $pseudo = null;
+    $password = null;
+    if(isset($_POST['pseudo']) && isset($_POST['password'])){
+
+        $pseudo = htmlspecialchars($_POST['pseudo']);
+        $password = htmlspecialchars($_POST['password']);
+
+        $datas = Admin::find($pseudo, sha1($password));
+
+        if($datas){
+            session_start();
+            $_SESSION['connected'] = 1;
+            header('Location: /resto/public/index.php?p=dashboard');
+            exit();
+        }else{
+            $error = 'Identifiant ou mot de passe incorrect';
+        }
+    }
     
 ?>
 <br>

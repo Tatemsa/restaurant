@@ -16,7 +16,7 @@
         $title = $query->title;
         $description = $query->description;
         $price = $query->price;
-    } 
+    }
     
     //Ici nous n'avons pas encore géré les fichiers
     if(isset($_POST['title']) && isset($_POST['description']) && isset($_POST['price'])){

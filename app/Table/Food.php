@@ -2,13 +2,9 @@
 namespace App\Table;
 
 use App\Apli;
-class Food{
-
-    public static function getFoods(){
-        return Apli::getDb()->query('SELECT * FROM foods', __CLASS__);
-    } 
+class Food extends Table{
+ 
     public function __get($key){
-        var_dump($key);
         $method = 'get' . ucfirst($key);
         $this->$key = $this->$method();
         return $this->$key;

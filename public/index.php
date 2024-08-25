@@ -8,6 +8,8 @@ if(isset($_GET['p'])){
     $p = 'home'; 
 }
 
+$title = 'Restaurant';
+
 
 ob_start();
 

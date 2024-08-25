@@ -1,8 +1,10 @@
 <?php
 
+use App\Apli;
 use App\Table\Food;
 
-    $datas = Food::getFoods();
+    $datas = Food::all();
+    Apli::setTitle("Dashboard");
     
 ?>
 <div class="container">
