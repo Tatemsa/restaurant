@@ -2,7 +2,7 @@
 namespace App\Table;
 
 use App\Apli;
-class Food extends Table{
+class FoodsTable extends Table{
  
     public function __get($key){
         $method = 'get' . ucfirst($key);
