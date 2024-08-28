@@ -1,24 +1,25 @@
 <?php
 namespace App\Table;
 
-use App\Apli;
+use App\Database\Database;
 
 class Table{
 
     protected $table;
+    protected $db;
     
-    public function __construct(){
+    public function __construct(Database $db){
+        $this->db = $db;
         if(is_null($this->table)){
             $parts = explode('\\', get_class($this));
             $class_name = strtolower(end($parts));
             $this->table = str_replace('table', '', $class_name);
         }
     }
-    // protected static $table;
 
-    // public static function all(){
-    //     return self::query('SELECT * FROM '. static::getTable());
-    // }
+    public function all(){
+        return $this->db->query("SELECT * FROM foods");
+    }
 
     // public static function findById($id){
     //     return self::query("

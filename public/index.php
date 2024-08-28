@@ -6,7 +6,8 @@ require '../app/Autoloader.php';
 App\Autoloader::register(); 
 
 $app = Apli::getInstance();
-
+$foods  = $app->getTable('foods');
+var_dump($foods->all());
 
 // if(isset($_GET['p'])){
 //     $p = $_GET['p'];
