@@ -1,17 +1,31 @@
 <?php
 
-use App\Table\Food;
-$error = null;
+    $error = null;
     $isSuccess = null;
     $title  = null;
     $description = null;
     $price = null;
+    $app = Apli::getInstance();
     if(isset($_GET['id'])){
-        $datas = Food::findById($_GET['id']);
+        $datas = $app->getTable('Food')->findById($_GET['id']);
         $title = $datas->title;
         $description = $datas->description;
         $price = $datas->price;
-    } 
+    }
+
+    if(isset($_POST['title']) && isset($_POST['description']) && isset($_POST['price'])){
+        if(!is_null($_POST['title']) && !is_null($_POST['description']) && !is_null($_POST['price'])){
+            if(isset($_GET['id'])){
+                $isSuccess = $app->getTable('Food')->update($_POST['title'], $_POST['description'], $_POST['admin_id'], $_POST['price'], $_GET['id']);
+                    header('Location: /resto/public/index.php?p=dashboard');
+            } else {
+                $isSuccess = $app->getTable('Food')->insert($_POST['title'], $_POST['description'], $_POST['admin_id'], $_POST['price']);   
+            }
+
+        }  else  {
+            $error = 'Veillez remplir tous les champs';
+        }
+    }
 ?>
 
 <h1 class="heading wow fadeInUp" data-wow-duration="300ms" data-wow-delay="300ms"><span>Ajouter/Modifier</span> un plat</h1>

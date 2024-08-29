@@ -3,7 +3,9 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title><?=App\Apli::getTitle();?></title>
+		<title>
+            Restaurant’s
+        </title>
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- CSS
@@ -85,7 +87,7 @@
             </div><!-- .row close -->
         </div><!-- .container close -->
 	</nav><!-- header close -->
-
+   
     <?=$content;?>
 
    

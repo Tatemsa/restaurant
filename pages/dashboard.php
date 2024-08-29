@@ -1,12 +1,11 @@
 <?php
 
-use App\Apli;
-use App\Table\Food;
-
-    $datas = Food::all();
-    Apli::setTitle("Dashboard");
-    
+    $app = Apli::getInstance();
+    $table = $app->getTable('food');
+    $datas = $table->all();
+    $app->title .= ' | Dashboard';
 ?>
+
 <div class="container">
     <div class="row">
         <div class="col-md-6">
@@ -36,7 +35,7 @@ use App\Table\Food;
 
         <div class="col-md-6">
             <h1>Menu</h1><br>
-            <a class="btn btn-success" href="/resto/edith.php">Ajouter un plat</a>
+            <a class="btn btn-success" href="/resto/public/index.php?p=edith">Ajouter un plat</a>
             <div class="bd-example m-0 border-0">
                 <table class="table table-striped">
                 <thead>
@@ -53,7 +52,7 @@ use App\Table\Food;
                         <th scope="row"><?=$k; ?></th>
                         <td><?=$item->title; ?></td>
                         <td><?=$item->price; ?></td>
-                        <td><a class="btn btn-primary" href="<?=$item->getUrl();?>">Modifier</a>  <a class="btn btn-danger" href="/resto/delete.php?id=<?=$item->id;?>">Supprimer</a></td>
+                        <td><a class="btn btn-primary" href="<?=$item->getUrl();?>">Modifier</a>  <a class="btn btn-danger" href="/resto/public/index.php?p=delete&id=<?=$item->id;?>">Supprimer</a></td>
                     </tr>
                 <?php endforeach;?>
                 </tbody>

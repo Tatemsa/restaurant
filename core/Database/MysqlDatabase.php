@@ -1,5 +1,5 @@
 <?php
-namespace App\Database;
+namespace Core\Database;
 
 use \PDO;
 
@@ -32,7 +32,7 @@ class  MysqlDatabase extends Database{
         $request = $this->getPDO()->query($statement);
         if($class === null){
             $request->setFetchMode(PDO::FETCH_OBJ);
-        }else{
+        } else {
             $request->setFetchMode(PDO::FETCH_CLASS, $class);
         }
         

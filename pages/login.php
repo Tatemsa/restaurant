@@ -1,11 +1,6 @@
 <?php
 
-use App\Table\Admin;
-Use App\Apli;
-
-    Apli::setTitle("Login");
-
-    if(Apli::isConnected()){
+    if(Apli::getInstance()->isConnected()){
         header('Location: /resto/public/index.php?p=dashboard');
         exit();
     } 
@@ -18,7 +13,7 @@ Use App\Apli;
         $pseudo = htmlspecialchars($_POST['pseudo']);
         $password = htmlspecialchars($_POST['password']);
 
-        $datas = Admin::find($pseudo, sha1($password));
+        $datas = Apli::getInstance()->getTable('Admin')->find($pseudo, sha1($password));
 
         if($datas){
             session_start();

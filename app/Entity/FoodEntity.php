@@ -1,9 +1,8 @@
 <?php
-namespace App\Table;
+namespace App\Entity;
 
-use App\Apli;
-class FoodsTable extends Table{
- 
+use Core\Entity\Entity;
+class FoodEntity extends Entity{
     public function __get($key){
         $method = 'get' . ucfirst($key);
         $this->$key = $this->$method();

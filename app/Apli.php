@@ -1,7 +1,7 @@
 <?php 
-namespace App;
 
-use App\Database\MysqlDatabase;
+use App\Config;
+use Core\Database\MysqlDatabase;
 
 class Apli{
 
@@ -30,16 +30,19 @@ class Apli{
         return  self::$_instance;
     }
 
-    // public static function isConnected(){
-    //     if(session_status() ===  PHP_SESSION_NONE){
-    //         session_start();
-    //     }
-    //     return !empty($_SESSION['connected']);
-    // }
+    public static function load(){
+        require ROOT . '/app/Autoloader.php';
+        \App\Autoloader::register();
+        require ROOT . '/core/Autoloader.php';
+        \Core\Autoloader::register();
+    }
 
-    // public static function getTitle(){
-    //     return self::$title;
-    // }
+    public function isConnected(){
+        if(session_status() ===  PHP_SESSION_NONE){
+            session_start();
+        }
+        return !empty($_SESSION['connected']);
+    }
 
     // public static function setTitle($title){
     //     self::$title = self::$title . " | " . $title;
