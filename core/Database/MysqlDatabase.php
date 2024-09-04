@@ -28,7 +28,7 @@ class  MysqlDatabase extends Database{
         return $this->pdo;
     }
     
-    public function query($statement, $class = null, $one=false){
+    public function query($statement, $class=null, $one=false){
         $request = $this->getPDO()->query($statement);
         if($class === null){
             $request->setFetchMode(PDO::FETCH_OBJ);
@@ -44,10 +44,15 @@ class  MysqlDatabase extends Database{
         return $datas;
     } 
 
-    public function prepare($statement, $attributes, $class, $one = false){
+    public function prepare($statement, $attributes, $class=null, $one = false){
         $request =  $this->getPDO()->prepare($statement);
         $request->execute($attributes);
-        $request->setFetchMode(PDO::FETCH_CLASS, $class);
+        if($class === null){
+            $request->setFetchMode(PDO::FETCH_OBJ);
+        } else {
+            $request->setFetchMode(PDO::FETCH_CLASS, $class);
+        }
+
         if($one){
             return $request->fetch();
         } 

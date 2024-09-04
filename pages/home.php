@@ -1,8 +1,7 @@
 
 <?php
     $app = Apli::getInstance();
-    $table = $app->getTable('food');    
-
+    $table = $app->getTable('food');  
 ?>
 
 <!--
@@ -17,11 +16,13 @@
                             <h3>Featured <span>Works</span></h3>
                         </div>
                         <div id="owl-example" class="owl-carousel">
-                            <?php foreach($carousel as $item):?>
-                                <div>
-                                <img class="img-responsive" src="<?= $item['path']?>" alt="">
-                            </div>
-                            <?php endforeach;?>
+                            <?php for($i=1; $i<3; $i++):?>
+                                <?php for($j=1; $j<5; $j++):?>
+                                    <div>
+                                        <img class="img-responsive" src="../public/images/slider/slider-img-<?=$j;?>.jpg" alt="">
+                                    </div>
+                                <?php endfor;?>
+                            <?php endfor;?>
                         </div>
                     </div>
                 </div><!-- .col-md-12 close -->
@@ -63,15 +64,15 @@
                                 <h3>Featured <span>on the week</span></h3>
                             </div>
                             <ul>
-                                <?php foreach($menu as $item): ?>
+                                <?php foreach($table->all() as $item): ?>
                                     <li class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="300ms">
                                         <div class="item">
                                             <div class="item-title">
-                                                <h2><?= $item['title'];?></h2>
+                                                <h2><?= $item->title;?></h2>
                                                 <div class="border-bottom"></div>
-                                                <span>$ <?= $item['price'];?></span>
+                                                <span>$ <?= $item->price;?></span>
                                             </div>
-                                            <p><?= $item['description'];?></p>
+                                            <p><?= $item->description;?></p>
                                         </div>
                                     </li>
                                 <?php endforeach; ?>
@@ -94,19 +95,23 @@
                     <div class="block">
                         <h1 class="heading">Latest <span>From</span> the <span>Blog</span></h1>
                         <ul>
-                            <?php foreach($images as $item):?>
+                            <?php foreach($table->all() as $item):?>²   
                                 <li class="wow fadeInLeft" data-wow-duration="300ms" data-wow-delay="300ms">
                                     <div class="blog-img">
-                                        <img src="<?=$item['path']?>" alt="blog-img">
+                                        <?php 
+                                            $parts = explode('/',$item->image); 
+                                            $image = end($parts);
+                                        ?>
+                                        <img src="../public/images/img/<?=$image?>" alt="blog-img">
                                     </div>
                                     <div class="content-right">
-                                        <h3><?=$item['title']?></h3>
-                                        <p><?=$item['description']?></p>
+                                        <h3><?=$item->title?></h3>
+                                        <p><?=$item->description?></p>
                                     </div>
                                 </li>
                             <?php endforeach;?>
                         </ul>
-                        <a class="btn btn-default btn-more-info wow bounceIn" data-wow-duration="500ms" data-wow-delay="1200ms" href="#" role="button">More Info</a>
+                        
                     </div>
                 </div><!-- .col-md-12 close -->
             </div><!-- .row close -->

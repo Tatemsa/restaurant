@@ -10,7 +10,7 @@ class FoodEntity extends Entity{
     }
 
     public function getUrl(){
-        return 'index.php?p=edith&id='. $this->id;
+        return 'admin.php?p=edith&id='. $this->id;
     }
 
     public function getAbstract(){

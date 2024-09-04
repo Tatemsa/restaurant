@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>
-            Restaurant’s
+            <?=$title?>
         </title>
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -66,19 +66,18 @@
 
                             <!-- Collect the nav links, forms, and other content for toggling -->
                             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                              <ul class="nav navbar-nav navbar-right" id="top-nav">
-                                <li><a href="#hero-area">Home</a></li>
-                                <li><a href="#about-us">about us</a></li>
-                                <li><a href="#blog">Blog</a></li>
-                                <li><a href="#price">menu</a></li>
-                                <li><a href="#subscribe">news</a></li>
-                                <li><a href="#contact-us">contacts</a></li>
-                                <li><a href="/resto/dashboard.php">Administration</a></li>
-                                <?php if(!empty($_SESSION['connected'])):?>
-                                  <li><a href="/resto/logout.php">Logout</a></li>
-                                <?php endif;?>
-
-                              </ul>
+                                <ul class="nav navbar navbar-nav navbar-right">
+                                    <li><a href="/resto/public/index.php">Home</a></li>
+                                    <li><a href="#about-us">About us</a></li>
+                                    <li><a href="#price">Menu</a></li>
+                                    <li><a href="#blog">Blog</a></li>
+                                    <li><a href="#subscribe">News</a></li>
+                                    <li><a href="#contact-us">Contact</a></li>
+                                    <li><a href="/resto/public/admin.php">Administration</a></li>
+                                    <?php if(!empty($_SESSION['auth'])):?>
+                                        <li><a href="/resto/public/admin.php?p=logout">Logout</a></li>
+                                    <?php endif;?>
+                                </ul>
                             </div><!-- /.navbar-collapse -->
                           </div><!-- /.container-fluid -->
                         </nav>
@@ -98,6 +97,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="block wow fadeInLeft"  data-wow-delay="200ms">
+                    <img src="../public/images/photo/photo-1.jpg" alt="image de marque">
                         <h3>CONTACT <span>INFO</span></h3>
                         <div class="info">
                             <ul>
@@ -143,11 +143,11 @@
                         <div class="gallary">
                             <h3>PHOTO <span>STREAM</span></h3>
                             <ul>
-                                <?php foreach($photos as $item):?>
+                                <?php for($i = 1; $i<5; $i++):?>
                                 <li>
-                                    <a href="#"><img src="<?=$item?>" alt=""></a>
+                                   <img src="../public/images/photo/photo-<?=$i?>.jpg" alt="Food image">
                                 </li>
-                                <?php endforeach;?>
+                                <?php endfor;?>
                             </ul>
                         </div>
                         <div class="social-media-link">

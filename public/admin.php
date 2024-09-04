@@ -1,10 +1,10 @@
 <?php
-define('ROOT', dirname(__DIR__));
 
+define('ROOT', dirname(__DIR__));
+define('PATH_IMAGE', dirname(__DIR__).'/public/images/img');
 
 require ROOT . '/app/Apli.php';
 Apli::load();
-$apli = Apli::getInstance();
 
 if(isset($_GET['p'])){
     $p = $_GET['p'];
@@ -12,18 +12,19 @@ if(isset($_GET['p'])){
     $p = 'home'; 
 }
 
-$views = $apli->setViews();
-$viewsPerMonth = $apli->setViewsPerMonth();
-$title =  $apli->title . ' | ' . $p;
+//Authentification
+$title = Apli::getInstance()->title . ' | admin | ' . $p;
 
 ob_start();
 
 if($p === 'home'){
-    require ROOT . '/pages/home.php';
-} elseif ($p === 'dashboard') {
     require ROOT . '/pages/admin/index.php';
 } elseif ($p === 'login') {
-    require ROOT . '/pages/admin/login.php';
+    require ROOT . '/pages/user/login.php';
+} elseif ($p === 'edith') {
+    require ROOT . '/pages/admin/edith.php';
+} elseif ($p === 'delete') {
+    require ROOT . '/pages/admin/delete.php';
 } elseif ($p === 'logout') {
     require ROOT . '/pages/admin/logout.php';
 }

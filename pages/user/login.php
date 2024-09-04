@@ -1,26 +1,15 @@
 <?php
-
-    if(Apli::getInstance()->isConnected()){
-        header('Location: /resto/public/index.php?p=dashboard');
-        exit();
-    } 
+use Core\Auth\DBAuth;
 
     $error = null;
-    $pseudo = null;
-    $password = null;
-    if(isset($_POST['pseudo']) && isset($_POST['password'])){
-
-        $pseudo = htmlspecialchars($_POST['pseudo']);
-        $password = htmlspecialchars($_POST['password']);
-
-        $datas = Apli::getInstance()->getTable('Admin')->find($pseudo, sha1($password));
-
-        if($datas){
-            session_start();
-            $_SESSION['connected'] = 1;
-            header('Location: /resto/public/index.php?p=dashboard');
-            exit();
-        }else{
+    
+    if(!empty($_POST)){
+        $app = Apli::getInstance();
+        $auth = new DBAuth($app->getDb());
+        $admin = $auth->login($_POST['pseudo'], $_POST['password']);
+        if($admin){
+            header('Location: /resto/public/admin.php');
+        } else {
             $error = 'Identifiant ou mot de passe incorrect';
         }
     }

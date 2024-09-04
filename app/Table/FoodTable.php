@@ -14,10 +14,10 @@ class FoodTable extends Table{
         ", [$id], true);
     }
 
-    public function insert($title, $description, $admin_id, $price){
+    public function insert($title, $description, $admin_id, $price, $image){
         return $this->query('
-            INSERT INTO ' . $this->table . ' (title, description, admin_id, price) VALUES (?,?,?,?)',
-            [$title, $description, $admin_id, $price]
+            INSERT INTO ' . $this->table . ' (title, description, admin_id, price, image) VALUES (?,?,?,?,?)',
+            [$title, $description, $admin_id, $price, $image]
         );
     }
 
